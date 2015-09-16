@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative '../game_setup.rb'
 
 class BattleshipsWeb < Sinatra::Base
   get '/' do
@@ -6,11 +7,12 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/new_game' do
-    @visitor = params[:name]
+    @player = params[:name]
     erb :new_game
   end
 
   get '/start_game' do
+    @board = Board.new(Cell).to_html
     erb :start_game
   end
 
