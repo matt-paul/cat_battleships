@@ -16,8 +16,12 @@ class BattleshipsWeb < Sinatra::Base
     erb :start_game
   end
 
+  get '/start_game' do
+
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
   set :views, proc { File.join(root, '..', 'views') }
-  set :views, proc { File.join(root, '..', 'styles') }
+  set :styles, proc { File.join(root, '..', 'styles/styles.css') }
 end

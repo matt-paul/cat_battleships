@@ -1,5 +1,8 @@
+<link href="<%= url('../styles/styles.css') %>" rel="stylesheet" type="text/css" />
+
 <div>
-  <ul>
+  <ul class="container">
+    <a href="place_ship"
     <% @board.each do |square| %>
       <li><%= square %></li>
       <% end %>
