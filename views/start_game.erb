@@ -1,6 +1,7 @@
 <div>
-  
-  <%= @board %>
-
-
+  <ul>
+    <% @board.each do |square| %>
+      <li><% square %></li>
+      <% end %>
+  </ul>
 </div>
