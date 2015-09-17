@@ -5,11 +5,21 @@
       /*border: 2px solid blue;*/
     }
 
-    .square {
+    .water {
       height: 65px;
       width: 65px;
-      border: 2px solid blue;
+      border: 2px solid white;
       float: left;
+      background-color: blue;
+    }
+
+    .ship {
+      height: 65px;
+      width: 65px;
+      border: 2px solid white;
+      float: left;
+      background-color: grey;
+
     }
 
     #abc {
@@ -24,6 +34,7 @@
         width: 65px;
         border: 2px solid blue;
         float: left;
+        color: blue;
       }
 
       #numbers {
@@ -46,27 +57,31 @@
 
 <%= params %>
 <div id="numbers">
-  <% (1..10).to_a.each do |number| %>
+  <% ("A".."J").to_a.each do |number| %>
   <div class="number"><%= number %></div>
   <% end %>
 </div>
 
 
 <div id="abc">
-  <% ("A".."J").to_a.each do |letter| %>
+  <% (1..10).to_a.each do |letter| %>
   <div class="letter"><%= letter %></div>
   <% end %>
 </div>
 
 
-<!-- <div> -->
+
   <div class="container">
-    <!-- <a href="place_ship" -->
-    <% @board.each do |square| %>
-      <div class="square"><%= square %></div>
+    <% @board.grid.each do |k,v| %>
+       <% if v.content.is_a?(Water) %>
+      <div class="water"></div>
+      <% else %>
+      <div class="ship"></div>
       <% end %>
+      <% end %>
+
   </div>
-<!-- </div> -->
+
 
 <form>
   Please place a ship
