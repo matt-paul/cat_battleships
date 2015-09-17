@@ -63,7 +63,9 @@
 </style>
 
 <%= params %>
-<%= session %>
+<% session.each do |s| %>
+<%= s %>
+<% end %>
 
 <div id="numbers">
   <% ("A".."J").to_a.each do |number| %>
@@ -81,16 +83,20 @@
 
 <!---v represents the value in the @grid hash, in this case cell --->
   <div class="container">
-    <% @board.grid.each do |k,v| %>
+    <% $board.grid.each do |k,v| %>
       <% if v.content.is_a?(Ship) %>
-          <% if v.hit? %>
-             <div class="ship_hit"></div>
-          <% else %>
-             <div class="ship"></div>
-           <% end %>
+        <% if v.hit? %>
+          <div class="ship_hit"></div>
         <% else %>
-           <div class="water"></div>
-         <% end %>
+          <div class="ship"></div>
+        <% end %>
+      <% else %>
+        <% if v.hit? %>
+          <div class="water">Miss!</div>
+        <% else %>
+          <div class="water"></div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 

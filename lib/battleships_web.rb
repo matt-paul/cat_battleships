@@ -11,22 +11,22 @@ class BattleshipsWeb < Sinatra::Base
   get '/new_game' do
     @player = Player.new
     @player.name = params[:name]
+    $board = Board.new(Cell)
     erb :new_game
   end
 
   get '/start_game' do
-    @board = Board.new(Cell)
     destroyer = Ship.new(3)
     if params[:coordinates] && params[:orientation]
       session[:coordinates] = params[:coordinates].to_sym
       session[:orientation] = params[:orientation].to_sym
-      @board.place(destroyer,params[:coordinates].to_sym, params[:orientation].to_sym )
+      $board.place(destroyer,params[:coordinates].to_sym, params[:orientation].to_sym )
     end
     if params[:shot_coordinates]
       session[:shot_coordinates] = params[:shot_coordinates].to_sym
-      @board.shoot_at(params[:shot_coordinates].to_sym)
+      $board.shoot_at(params[:shot_coordinates].to_sym)
     end
-    p session
+
     erb :start_game
   end
 
