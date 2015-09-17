@@ -14,10 +14,13 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/start_game' do
     @board = Board.new(Cell)
-  destroyer = Ship.new(3)
-  if params[:coordinates] && params[:orientation]
-    @board.place(destroyer,params[:coordinates].to_sym, params[:orientation].to_sym )
-  end
+    destroyer = Ship.new(3)
+    if params[:coordinates] && params[:orientation]
+      @board.place(destroyer,params[:coordinates].to_sym, params[:orientation].to_sym )
+    end
+    if params[:shot_coordinates]
+      @board.shoot_at(params[:shot_coordinates].to_sym)
+    end
     erb :start_game
   end
 
