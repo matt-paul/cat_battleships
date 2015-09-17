@@ -13,6 +13,7 @@ class Ship
 
 	def sunk?
 		hits == size
+
 	end
 
 	def floating?
@@ -32,11 +33,11 @@ class Ship
 	end
 
 	def self.submarine
-		new 3
+		new 2
 	end
 
 	def self.patrol_boat
-		new 5
+		new 1
 	end
 
 end

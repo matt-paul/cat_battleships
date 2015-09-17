@@ -26,6 +26,14 @@
       width: 65px;
       border: 2px solid white;
       float: left;
+      background-color: orange;
+    }
+
+    .sunk {
+      height: 65px;
+      width: 65px;
+      border: 2px solid white;
+      float: left;
       background-color: red;
     }
 
@@ -58,14 +66,68 @@
           border: 2px solid blue;
           float: left;
         }
-    }
+
+       #controls {
+         float: right;
+
+       }
 
 </style>
 
+<div id ="controls">
+<form>
+  Please place a destroyer
+  <input type="text" name="d_coordinates">
+  Please select orientation
+  <input type="text" name="d_orientation">
+  <input type="submit" value="Submit">
+</form>
+
+<form>
+  Please place a battleship
+  <input type="text" name="b_coordinates">
+  Please select orientation
+  <input type="text" name="b_orientation">
+  <input type="submit" value="Submit">
+</form>
+
+<form>
+  Please place a submarine
+  <input type="text" name="s_coordinates">
+  Please select orientation
+  <input type="text" name="s_orientation">
+  <input type="submit" value="Submit">
+</form>
+
+<form>
+  Please place a carrier
+  <input type="text" name="c_coordinates">
+  Please select orientation
+  <input type="text" name="c_orientation">
+  <input type="submit" value="Submit">
+</form>
+
+<form>
+  Please place a patrol boat
+  <input type="text" name="p_coordinates">
+  Please select orientation
+  <input type="text" name="p_orientation">
+  <input type="submit" value="Submit">
+</form>
+
+<form>
+  please take aim
+  <input type="text" name="shot_coordinates">
+  <input type="submit" value="Fire">
+</form>
+
+</div>
+
+<!--
 <%= params %>
 <% session.each do |s| %>
 <%= s %>
-<% end %>
+<% end %> -->
 
 <div id="numbers">
   <% ("A".."J").to_a.each do |number| %>
@@ -99,18 +161,3 @@
       <% end %>
     <% end %>
   </div>
-
-
-<form>
-  Please place a ship
-  <input type="text" name="coordinates">
-  Please select orientation
-  <input type="text" name="orientation">
-  <input type="submit" value="Submit">
-</form>
-
-<form>
-  please take aim
-  <input type="text" name="shot_coordinates">
-  <input type="submit" value="Fire">
-</form>
