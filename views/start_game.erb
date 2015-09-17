@@ -19,7 +19,14 @@
       border: 2px solid white;
       float: left;
       background-color: grey;
+    }
 
+    .ship_hit {
+      height: 65px;
+      width: 65px;
+      border: 2px solid white;
+      float: left;
+      background-color: red;
     }
 
     #abc {
@@ -56,6 +63,8 @@
 </style>
 
 <%= params %>
+<%= session %>
+
 <div id="numbers">
   <% ("A".."J").to_a.each do |number| %>
   <div class="number"><%= number %></div>
@@ -70,16 +79,19 @@
 </div>
 
 
-
+<!---v represents the value in the @grid hash, in this case cell --->
   <div class="container">
     <% @board.grid.each do |k,v| %>
-       <% if v.content.is_a?(Water) %>
-      <div class="water"></div>
-      <% else %>
-      <div class="ship"></div>
-      <% end %>
-      <% end %>
-
+      <% if v.content.is_a?(Ship) %>
+          <% if v.hit? %>
+             <div class="ship_hit"></div>
+          <% else %>
+             <div class="ship"></div>
+           <% end %>
+        <% else %>
+           <div class="water"></div>
+         <% end %>
+    <% end %>
   </div>
 
 

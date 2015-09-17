@@ -2,6 +2,8 @@ require 'sinatra/base'
 require_relative '../game_setup.rb'
 
 class BattleshipsWeb < Sinatra::Base
+  enable :sessions
+
   get '/' do
     erb :index
   end
@@ -16,11 +18,15 @@ class BattleshipsWeb < Sinatra::Base
     @board = Board.new(Cell)
     destroyer = Ship.new(3)
     if params[:coordinates] && params[:orientation]
+      session[:coordinates] = params[:coordinates].to_sym
+      session[:orientation] = params[:orientation].to_sym
       @board.place(destroyer,params[:coordinates].to_sym, params[:orientation].to_sym )
     end
     if params[:shot_coordinates]
+      session[:shot_coordinates] = params[:shot_coordinates].to_sym
       @board.shoot_at(params[:shot_coordinates].to_sym)
     end
+    p session
     erb :start_game
   end
 
