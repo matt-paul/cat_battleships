@@ -7,17 +7,15 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/new_game' do
-    @player = params[:name]
+    @player = Player.new
+    @player.name = params[:name]
     erb :new_game
   end
 
   get '/start_game' do
     @board = Board.new(Cell).to_html
+
     erb :start_game
-  end
-
-  get '/start_game' do
-
   end
 
   # start the server if ruby file executed directly

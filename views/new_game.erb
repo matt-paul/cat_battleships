@@ -1,8 +1,8 @@
-<% if @player && @player.size > 0 %>
-  Welcome to Battleships, <%= @player %>! <br>
+<% if @player && @player.name %>
+  Welcome to Battleships, <%= @player.name %>! <br>
   <a href = '/start_game'>Start the game</a>
 <% else %>
-  <% if @player && @player.size == 0 %>
+  <% if @player && @player.name %>
     You did not enter a name. Please enter your name.
   <% end %>
   <form>
@@ -11,3 +11,4 @@
     <input type="submit" value="Submit">
   </form>
   <% end %>
+<%= params %>

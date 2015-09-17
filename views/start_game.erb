@@ -44,7 +44,7 @@
 
 </style>
 
-
+<%= params %>
 <div id="numbers">
   <% (1..10).to_a.each do |number| %>
   <div class="number"><%= number %></div>
@@ -67,3 +67,11 @@
       <% end %>
   </div>
 <!-- </div> -->
+
+<form>
+  Please place a ship
+  <input type="text" name="coordinates">
+  Please select orientation
+  <input type="text" name="orientation">
+  <input type="submit" value="Submit">
+</form>
