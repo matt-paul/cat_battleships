@@ -35,6 +35,7 @@
       border: 2px solid white;
       float: left;
       background-color: red;
+      /*background-image: url(..public/images/sunken_ship2.jpg);*/
     }
 
     #abc {
@@ -146,11 +147,13 @@
   <div class="container">
     <% $board.grid.each do |k,v| %>
       <% if v.content.is_a?(Ship) %>
-        <% if v.hit? %>
-          <div id = <%= k.to_s %> class="ship_hit"></div>
-        <% else %>
-          <div id = <%= k.to_s %> class="ship"></div>
-        <% end %>
+          <% if v.content.sunk? %>
+            <div id=<%= k.to_s %> class ="sunk"></div>
+          <% elsif v.hit? %>
+            <div id = <%= k.to_s %> class="ship_hit"></div>
+          <% else %>
+            <div id = <%= k.to_s %> class="ship"></div>
+          <% end %>
       <% else %>
         <% if v.hit? %>
           <div id = <%= k.to_s %> class="water">Miss!</div>

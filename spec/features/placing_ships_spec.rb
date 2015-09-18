@@ -20,15 +20,25 @@ feature 'Placing Ships' do
     expect(page).to have_css('div.ship')
   end
 
-  scenario 'PLacing ship on the board covering F1' do
+  scenario 'PLacing battleship on the board covering F1' do
     visit '/new_game'
     visit '/start_game'
     fill_in 'b_coordinates', with: 'F1'
     fill_in 'b_orientation', with: 'vertically'
     click_on 'b_submit'
-    expect(page).to have_css('div.ship#F1')
+    expect(page).to have_css('div.ship#H1')
 
   end
+
+  scenario 'Checking that a ship doesnt cover elsewhere on board' do
+    visit '/new_game'
+    visit '/start_game'
+    fill_in 'b_coordinates', with: 'F1'
+    fill_in 'b_orientation', with: 'vertically'
+    click_on 'b_submit'
+    expect(page).to_not have_css('div.ship#A1')
+  end
+
 
 
 end
