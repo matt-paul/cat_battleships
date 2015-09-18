@@ -69,7 +69,6 @@
 
        #controls {
          float: right;
-
        }
 
 </style>
@@ -80,7 +79,7 @@
   <input type="text" name="d_coordinates">
   Please select orientation
   <input type="text" name="d_orientation">
-  <input type="submit" value="Submit">
+  <input type="submit" value="d_submit">
 </form>
 
 <form>
@@ -88,7 +87,7 @@
   <input type="text" name="b_coordinates">
   Please select orientation
   <input type="text" name="b_orientation">
-  <input type="submit" value="Submit">
+  <input type="submit" value="b_submit">
 </form>
 
 <form>
@@ -128,7 +127,7 @@
 <% session.each do |s| %>
 <%= s %>
 <% end %> -->
-
+<div>
 <div id="numbers">
   <% ("A".."J").to_a.each do |number| %>
   <div class="number"><%= number %></div>
@@ -148,16 +147,17 @@
     <% $board.grid.each do |k,v| %>
       <% if v.content.is_a?(Ship) %>
         <% if v.hit? %>
-          <div class="ship_hit"></div>
+          <div id = <%= k.to_s %> class="ship_hit"></div>
         <% else %>
-          <div class="ship"></div>
+          <div id = <%= k.to_s %> class="ship"></div>
         <% end %>
       <% else %>
         <% if v.hit? %>
-          <div class="water">Miss!</div>
+          <div id = <%= k.to_s %> class="water">Miss!</div>
         <% else %>
-          <div class="water"></div>
+          <div id = <%= k.to_s %> class="water"></div>
         <% end %>
       <% end %>
     <% end %>
   </div>
+</div>
